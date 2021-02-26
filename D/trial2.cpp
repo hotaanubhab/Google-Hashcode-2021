@@ -47,49 +47,36 @@ int main()
 	int V;
 	int F;
 	cin>>D>>I>>S>>V>>F;
-  S=S-48836;
-			int B[S];
-			int E[S];
-			int time[S];
-		string n[S];
-
-		vvi path;
+		
+			vector<int> E;
+			
+		vector<string> n;
+		vvi path;int gand;string marao;
 	for(int i=0;i<S;i++)
 	{
-		cin>>B[i];
-		cin>>E[i];
-		cin>>n[i];
-		cin>>time[i];
+		cin>>gand;
+		cin>>gand;
+    E.push_back(gand);
+		cin>>marao;
+     n.push_back(marao);
+		cin>>gand;
 	}
 	
 
-  
+  cout<<I<<endl;
   int tt = 0,ti=0,tc=0;
   for(int i=0;i<I;i++)
   {
-    
-    for(int j=0;j<S;j++)
-    {
-      if(E[j]==i){tc++;}
-    }
-    if(tc>0)ti++;
-    tc=0;
-
-  }
-  cout<<ti<<endl;
-  for(int i=0;i<I;i++)
-  {
-  	
-  	for(int j=0;j<S;j++)
+  	cout<<i<<endl;
+  	for(int j=S-1;j>=0;j--)
   	{
   		if(E[j]==i){tc++;}
   	}
-    if(tc>0){cout<<i<<endl;
-  	cout<<tc<<endl;}
+  	cout<<tc<<endl;
   	tc=0;
-  	for(int j=0;j<S;j++)
+  	for(int j=S-1;j>=0;j--)
   	{
-  		if(E[j]==i){cout<<n[j]<<" "<<2<<endl;}
+  		if(E[j]==i){cout<<n[j]<<" "<<1<<endl;}
   	}
 
   }

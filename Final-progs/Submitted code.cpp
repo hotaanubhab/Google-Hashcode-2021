@@ -47,12 +47,10 @@ int main()
 	int V;
 	int F;
 	cin>>D>>I>>S>>V>>F;
-  S=S-48836;
 			int B[S];
 			int E[S];
 			int time[S];
 		string n[S];
-
 		vvi path;
 	for(int i=0;i<S;i++)
 	{
@@ -61,35 +59,36 @@ int main()
 		cin>>n[i];
 		cin>>time[i];
 	}
-	
+	for(int i=0;i<V;i++)
+	{
+		int p;
+		cin>>p;
+		vector<int> temp_path;
+		for(int j=0;j<p;j++)
+		{
+			
+			string k;
+			cin>>k;
+			int temp_route  = in_array(k, n);
+			temp_path.push_back(temp_route);
+		}
+		path.push_back(temp_path);
+	}
 
-  
+  cout<<I<<endl;
   int tt = 0,ti=0,tc=0;
   for(int i=0;i<I;i++)
   {
-    
-    for(int j=0;j<S;j++)
-    {
-      if(E[j]==i){tc++;}
-    }
-    if(tc>0)ti++;
-    tc=0;
-
-  }
-  cout<<ti<<endl;
-  for(int i=0;i<I;i++)
-  {
-  	
+  	cout<<i<<endl;
   	for(int j=0;j<S;j++)
   	{
   		if(E[j]==i){tc++;}
   	}
-    if(tc>0){cout<<i<<endl;
-  	cout<<tc<<endl;}
+  	cout<<tc<<endl;
   	tc=0;
   	for(int j=0;j<S;j++)
   	{
-  		if(E[j]==i){cout<<n[j]<<" "<<2<<endl;}
+  		if(E[j]==i){cout<<n[j]<<" "<<1<<endl;}
   	}
 
   }
