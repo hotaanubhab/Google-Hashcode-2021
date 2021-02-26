@@ -25,9 +25,9 @@
 
 using namespace std;
 
-int in_array(string value, string *array)
+int in_array(string value, string array[],int size)
 {
-    int size = (*array).size();
+  
     for (int i = 0; i < size; i++)
     {
         if (value == array[i])
@@ -51,7 +51,13 @@ int main()
       int E[S];
       int time[S];
     string n[S];
+    int used[S];
+
     vvi path;
+    for(int i=0;i<S;i++)
+  {
+    used[i]=0;
+  }
   for(int i=0;i<S;i++)
   {
     cin>>B[i];
@@ -69,26 +75,43 @@ int main()
       
       string k;
       cin>>k;
-      int temp_route  = in_array(k, n);
+      int temp_route  = in_array(k, n,S);
+      used[temp_route]=1;
       temp_path.push_back(temp_route);
     }
     path.push_back(temp_path);
   }
 
-  cout<<I<<endl;
+  
   int tt = 0,ti=0,tc=0;
   for(int i=0;i<I;i++)
   {
-    cout<<i<<endl;
-    for(int j=S-1;j>=0;j--)
+    
+    for(int j=0;j<S;j++)
     {
-      if(E[j]==i){tc++;}
+      if(E[j]==i && used[j]==1){tc++;}
     }
-    cout<<tc<<endl;
+    if(tc>0)
+      { ti++;}
     tc=0;
-    for(int j=S-1;j>=0;j--)
+   
+
+  }
+  cout<<ti<<endl;
+  for(int i=0;i<I;i++)
+  {
+    
+    for(int j=0;j<S;j++)
     {
-      if(E[j]==i){cout<<n[j]<<" "<<1<<endl;}
+      if(E[j]==i && used[j]==1){tc++;}
+    }
+    if(tc>0)
+      { cout<<i<<endl;
+        cout<<tc<<endl;}
+    tc=0;
+    for(int j=0;j<S;j++)
+    {
+      if(E[j]==i && used[j]==1){cout<<n[j]<<" "<<1<<endl;}
     }
 
   }
